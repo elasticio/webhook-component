@@ -6,5 +6,8 @@
         "test": "exit 0"
     },
     "author": "elastic.io GmbH",
-    "license": "BSD-2-Clause"
+    "license": "BSD-2-Clause",
+    "dependencies": {
+        "request": "2.55.x"
+    }
 }
