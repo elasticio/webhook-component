@@ -1,6 +1,6 @@
 var request = require('request');
 var qs = require('querystring');
-var messages = require('../messages.js');
+var messages = require('./lib/messages.js');
 
 exports.putOrPost = function (method, msg, conf, next) {
     'use strict';
