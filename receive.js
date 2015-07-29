@@ -1,4 +1,4 @@
-exports.process = function (msg, conf, next) {
-
-    next(null, msg);
+exports.process = function (msg, conf) {
+    this.emit('data', msg);
+    this.emit('end');
 };
