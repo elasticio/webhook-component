@@ -1,0 +1,10 @@
+{
+    "name": "webhook",
+    "version": "0.0.1",
+    "description": "elastic.io webhook component",
+    "scripts": {
+        "test": "exit 0"
+    },
+    "author": "elastic.io GmbH",
+    "license": "BSD-2-Clause"
+}
