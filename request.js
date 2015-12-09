@@ -1,11 +1,14 @@
 var request = require('request');
 var qs = require('querystring');
 var messages = require('./lib/messages.js');
+var debug = require('debug')('webhook:request');
 
 exports.putOrPost = function putOrPost(method, msg, conf) {
     'use strict';
     var uri = conf.uri;
     var body = msg.body;
+
+    debug('Request body:', body);
 
     var requestSettings = buildRequestSettings(method, uri, conf.secret);
     requestSettings.body = JSON.stringify(body);
