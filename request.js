@@ -8,7 +8,7 @@ exports.putOrPost = function putOrPost(method, msg, conf) {
     var uri = conf.uri;
     var body = msg.body;
 
-    debug('Request body:', body);
+    debug('Request body: %j', body);
 
     var requestSettings = buildRequestSettings(method, uri, conf.secret);
     requestSettings.body = JSON.stringify(body);
