@@ -1,7 +1,9 @@
+"use strict";
 var Q = require("q");
 
 exports.process = function (msg, conf) {
-    console.log("Received new message");
+    let msgId = msg.id;
+    console.log("Received new message with id", msgId);
     console.log(msg);
 
     var self = this;
@@ -12,7 +14,7 @@ exports.process = function (msg, conf) {
         .finally(onEnd);
 
     function emitData() {
-        console.log("Emitting data");
+        console.log("Emitting data of message:", msgId);
         self.emit('data', msg);
     }
 
@@ -22,7 +24,7 @@ exports.process = function (msg, conf) {
     }
 
     function onEnd() {
-        console.log("Emitting end");
+        console.log("Finished processing message:", msgId);
         self.emit('end');
     }
 };
