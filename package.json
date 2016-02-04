@@ -5,8 +5,8 @@
   "scripts": {
     "test": "./node_modules/jasmine-node/bin/jasmine-node --test-dir spec"
   },
-  "engines": {
-    "node": "0.12.7"
+  "engine": {
+    "node": "5.0.0"
   },
   "author": "elastic.io GmbH",
   "license": "BSD-2-Clause",
