@@ -219,10 +219,19 @@ describe("Webhook", function () {
           }
         };
 
-        receive.process.call(self, msg, {});
 
-        expect(self.emit.calls.length).toBe(2);
-        expect(self.emit.calls[0].args).toEqual(['data', msg]);
-        expect(self.emit.calls[1].args).toEqual(['end']);
+        runs(function () {
+            receive.process.call(self, msg, {});
+        });
+
+        waitsFor(function () {
+            return self.emit.calls.length === 2;
+        }, 'Timed Out', 1000);
+
+        runs(function () {
+
+            expect(self.emit.calls[0].args).toEqual(['data', msg]);
+            expect(self.emit.calls[1].args).toEqual(['end']);
+        });
     });
 });
