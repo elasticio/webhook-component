@@ -25,25 +25,19 @@
     },
     "actions": {
         "post": {
-            "title": "Post",
-            "main": "./post.js",
+            "title": "Send data",
+            "main": "./send.js",
             "fields": {
-                "uri": {
-                    "viewClass": "TextFieldView",
-                    "label": "URI",
-                    "required": true
+                "method": {
+                    "viewClass": "SelectView",
+                    "label": "HTTP Verb",
+                    "prompt": "Please select",
+                    "required": true,
+                    "model": {
+                        "POST": "POST",
+                        "PUT": "PUT"
+                    }
                 },
-                "secret": {
-                    "viewClass": "TextFieldView",
-                    "label": "Secret",
-                    "required": false
-                }
-            }
-        },
-        "put": {
-            "title": "Put",
-            "main": "./put.js",
-            "fields": {
                 "uri": {
                     "viewClass": "TextFieldView",
                     "label": "URI",
