@@ -1,41 +1,51 @@
 {
-    "title":"Webhook",
-    "description" : "Webhooks allow you to collect information about events as they happen in near real-time. Provide a URL, select when and where you want that URL to receive data about events on your list, and we'll send it to you as the events take place.  It is recommended that you specify a URL using https.",
-    "triggers":{
-        "receive":{
-            "title":"Receive",
-            "main":"./receive.js",
-            "fields" : {
-                "url" : {
-                    "viewClass" : "WebHookURLView",
-                    "label" : "WebHook URL",
-                    "required" : false
+    "title": "Webhook",
+    "description": "Webhooks allow you to collect information about events as they happen in near real-time. Provide a URL, select when and where you want that URL to receive data about events on your list, and we'll send it to you as the events take place.  It is recommended that you specify a URL using https.",
+    "triggers": {
+        "receive": {
+            "title": "Receive",
+            "main": "./receive.js",
+            "fields": {
+                "url": {
+                    "viewClass": "WebHookURLView",
+                    "label": "WebHook URL",
+                    "required": false
                 },
-                "payload" : {
-                    "viewClass":"WebHookPayloadView",
-                    "label":"Sample data",
-                    "required" : true,
-                    "placeholder":"{ \"foo\" : \"bar\" }"
+                "payload": {
+                    "viewClass": "WebHookPayloadView",
+                    "label": "Sample data",
+                    "required": true,
+                    "placeholder": "{ \"foo\" : \"bar\" }"
                 }
             },
-            "metadata" : {
-                "out" : {}
+            "metadata": {
+                "out": {}
             }
         }
     },
-    "actions" : {
-        "post" : {
-            "title" : "Post",
-            "main" : "./post.js",
-            "fields" : {
-                "uri" : {
-                    "viewClass":"TextFieldView",
-                    "label":"URI",
-                    "required" : true
+    "actions": {
+        "post": {
+            "title": "Send data",
+            "main": "./send.js",
+            "fields": {
+                "method": {
+                    "viewClass": "SelectView",
+                    "label": "HTTP Verb",
+                    "prompt": "Please select",
+                    "required": true,
+                    "model": {
+                        "POST": "POST",
+                        "PUT": "PUT"
+                    }
                 },
-                "secret" : {
-                    "viewClass":"TextFieldView",
-                    "label":"Secret",
+                "uri": {
+                    "viewClass": "TextFieldView",
+                    "label": "URI",
+                    "required": true
+                },
+                "secret": {
+                    "viewClass": "TextFieldView",
+                    "label": "Secret",
                     "required": false
                 }
             }
