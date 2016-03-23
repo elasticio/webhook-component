@@ -39,6 +39,22 @@
                     "required": false
                 }
             }
+        },
+        "put": {
+            "title": "Put",
+            "main": "./put.js",
+            "fields": {
+                "uri": {
+                    "viewClass": "TextFieldView",
+                    "label": "URI",
+                    "required": true
+                },
+                "secret": {
+                    "viewClass": "TextFieldView",
+                    "label": "Secret",
+                    "required": false
+                }
+            }
         }
     }
 }
