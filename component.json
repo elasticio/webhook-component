@@ -47,7 +47,14 @@
                     "viewClass": "TextFieldView",
                     "label": "Secret",
                     "required": false
-                }
+                },
+                "outputSample":{
+                    "viewClass":"OutMetadataView",
+                    "label":"Output JSON Sample",
+                    "required":true,
+                    "default" : "{ \"response\": \"ok\" }",
+                    "placeholder" : "{ \"message\" : \"hello world\" }"
+                }                
             }
         }
     }
