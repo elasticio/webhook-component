@@ -1,6 +1,7 @@
 {
     "title": "Webhook",
     "description": "Webhooks allow you to collect information about events as they happen in near real-time. Provide a URL, select when and where you want that URL to receive data about events on your list, and we'll send it to you as the events take place.  It is recommended that you specify a URL using https.",
+    "docsUrl":"https://github.com/elasticio/webhook-component",
     "triggers": {
         "receive": {
             "title": "Receive",
@@ -54,7 +55,7 @@
                     "required":true,
                     "default" : "{ \"response\": \"ok\" }",
                     "placeholder" : "{ \"message\" : \"hello world\" }"
-                }                
+                }
             }
         }
     }
