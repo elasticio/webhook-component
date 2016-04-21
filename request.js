@@ -1,6 +1,6 @@
 var request = require('request');
 var qs = require('querystring');
-var messages = require('./lib/messages.js');
+var messages = require('elasticio-node').messages;
 var debug = require('debug')('webhook:request');
 
 exports.putOrPost = function putOrPost(method, msg, conf) {
@@ -59,9 +59,33 @@ function callback(err, response, body) {
     var sc = response.statusCode;
 
     if (sc >= 200 && sc <= 206) {
-        this.emit('data', messages.newMessageWithBody(body));
+        this.emit('data', newMessage(response, body));
     } else {
         this.emit('error', new Error('Endpoint responds with ' + sc));
     }
     this.emit('end');
+}
+
+function newMessage(response, body) {
+    var headers = response.headers;
+
+    var contentType = headers['content-type'];
+
+    var msgBody = getJSONBody(contentType, body);
+
+    var msg = messages.newMessageWithBody(msgBody);
+    msg.headers = headers;
+
+    return msg;
+}
+
+function getJSONBody(contentType, body) {
+
+     if(contentType && contentType.indexOf('application/json') === 0) {
+         return JSON.parse(body);
+     }
+
+    return {
+        responseBody : body
+    }
 }
