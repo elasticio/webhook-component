@@ -12,6 +12,11 @@
                     "label": "WebHook URL",
                     "required": false
                 },
+                "hmac_key": {
+                    "viewClass": "TextFieldView",
+                    "label": "HMAC verification shared secret",
+                    "required": false
+                },
                 "payload": {
                     "viewClass": "WebHookPayloadView",
                     "label": "Sample data",
