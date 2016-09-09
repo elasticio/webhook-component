@@ -13,7 +13,7 @@
                     "required": false
                 },
                 "hmac_key": {
-                    "viewClass": "OptionalRandomString",
+                    "viewClass": "TextFieldView",
                     "label": "HMAC verification shared secret",
                     "required": false
                 },
