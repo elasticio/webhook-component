@@ -9,11 +9,6 @@
             "description": "Receive trigger has 3 fields:  the WebHook URL to send your data, HMAC to secure your WebHook and sample data field to define your incoming message.",
             "main": "./receive.js",
             "fields": {
-                "url": {
-                    "viewClass": "WebHookURLView",
-                    "label": "WebHook URL",
-                    "required": false
-                },
                 "hmac_key": {
                     "viewClass": "TextFieldView",
                     "label": "HMAC verification shared secret",
