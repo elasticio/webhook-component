@@ -16,7 +16,7 @@ const authTypes = {
 
 function verify(credentials) {
     // access the value of the auth field defined in credentials section of component.json
-    const { type, basic } = credentials.auth;
+    const { type, basic = {} } = credentials.auth;
 
     if (type === authTypes.BASIC) {
         if (!basic.username) {
