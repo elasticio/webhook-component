@@ -11,7 +11,7 @@ module.exports = verify;
  */
 
 const authTypes = {
-    BASIC: 'Basic Auth',
+    BASIC: 'BASIC',
 }
 
 function verify(credentials) {
