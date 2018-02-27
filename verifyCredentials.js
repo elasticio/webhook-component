@@ -12,10 +12,9 @@ module.exports = verify;
 
 const authTypes = {
     BASIC: 'BASIC',
-}
+};
 
 function verify(credentials) {
-    console.log('credentials:', JSON.stringify(credentials));
     // access the value of the auth field defined in credentials section of component.json
     const { type, basic } = credentials.auth;
 
