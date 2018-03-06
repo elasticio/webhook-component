@@ -6,6 +6,10 @@ exports.process = function (msg, conf) {
     console.log("Received new message with id", msgId);
     console.log(msg);
 
+    if (msg.query && msg.body) {
+        msg.body._query = msg.query;
+    }
+
     var self = this;
 
     Q()

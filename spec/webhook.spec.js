@@ -288,7 +288,37 @@ describe("Webhook", function () {
         }, 'Timed Out', 1000);
 
         runs(function () {
+            expect(self.emit.calls[0].args[1]).toBeDefined();
+            expect(self.emit.calls[0].args[1].body).toBeDefined();
+            expect(self.emit.calls[0].args[1].body._query).toBeUndefined();
+            expect(self.emit.calls[0].args).toEqual(['data', msg]);
+            expect(self.emit.calls[1].args).toEqual(['end']);
+        });
+    });
 
+    it('Inbound with query', function () {
+        var msg = {
+            body: {
+                foo: "bar"
+            },
+            query : {
+                baz: 'boo'
+            }
+        };
+
+
+        runs(function () {
+            receive.process.call(self, msg, {});
+        });
+
+        waitsFor(function () {
+            return self.emit.calls.length === 2;
+        }, 'Timed Out', 1000);
+
+        runs(function () {
+            expect(self.emit.calls[0].args[1]).toBeDefined();
+            expect(self.emit.calls[0].args[1].body).toBeDefined();
+            expect(self.emit.calls[0].args[1].body._query).toEqual({baz: 'boo'});
             expect(self.emit.calls[0].args).toEqual(['data', msg]);
             expect(self.emit.calls[1].args).toEqual(['end']);
         });
