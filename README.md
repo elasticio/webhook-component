@@ -33,3 +33,8 @@ $ git remote add elasticio your-created-team-name@git.elastic.io:webhook-compone
 $ git push elasticio master
 ```
 Please follow the instruction provided in the [Create a team](http://go2.elastic.io/manage-teams) and [Create a repository](http://go2.elastic.io/manage-repositories) for a success.
+
+## Limitations
+
+1. Maximal possible size for an attachment is 10 MB.
+2. Attachments mechanism does not work with [Local Agent Installation](https://support.elastic.io/support/solutions/articles/14000076461-announcing-the-local-agent-)
