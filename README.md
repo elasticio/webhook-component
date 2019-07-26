@@ -1,40 +1,58 @@
 # webhook-component
 
-> WebHook _component template_ for the [elastic.io platform](https://www.elastic.io "elastic.io platform").
-
-This is an open source component template for sending and receiving [WebHooks](https://en.wikipedia.org/wiki/Webhook) on [elastic.io platform](https://www.elastic.io "elastic.io platform"). You can clone it and change it as you wish. However, **if you plan to deploy it into [elastic.io platform](https://www.elastic.io "elastic.io platform") you must follow sets of instructions to succeed**.
-
-## Before you Begin
+##Description
+An open source component for sending and receiving [WebHooks](https://en.wikipedia.org/wiki/Webhook) on [elastic.io platform](https://www.elastic.io "elastic.io platform"). 
 
 Before you can deploy any code into our system **you must be a registered elastic.io platform user**. Please see our home page at [https://www.elastic.io](https://www.elastic.io) to learn how.
 
-> Any attempt to deploy a code into our platform without a registration would fail.
+##Credentials
+Webhook component supports the following authorisation types:
+* **No Auth** - use this method to work with any open REST API
+* **Basic Auth** - use it to provide login credentials like username/password
+* **API Key Auth** - use it to provide API Key to access the resource
+* **HMAC verification shared secret** - use it to verify via a shared secret
 
-After the registration and opening of the account you must **[upload your SSH Key](http://go2.elastic.io/manage-ssh-keys)** into our platform.
+![Webhook Credentials](https://user-images.githubusercontent.com/8449044/61962330-ec5c2c00-afd1-11e9-8e5f-6a1c89126034.png)
 
-> If you fail to upload you SSH Key you will get **permission denied** error during the deployment.
+##Triggers
+### Receive
+Simple webhook trigger which receives data as an input and starts the flow execution after this.
 
-## Getting Started
+Receive trigger has 1 field: sample data field to define your incoming message.
 
-After registration and uploading of your SSH Key you can proceed to deploy it into our system. At this stage we suggest you to:
-* [Create a team](http://go2.elastic.io/manage-teams) to work on your new component (**required**).
-* [Create a repository](http://go2.elastic.io/manage-repositories) where your new component is going to *reside* inside the team that you have just created. For a simplicity you can name your repository **webhook-component**.
+To use the Receive trigger for WebHook at elastic.io you would need to define the sample structure which would be used to send your data. 
+You are able to input your desired data structure either as JSON data, XML or as List of properties.
 
-```bash
-$ git clone https://github.com/elasticio/webhook-component.git webhook-component
-
-$ cd webhook-component
+#### Sending JSON
+Send WebHook using JSON data and Content-Type of `application/json` - in this case you just paste a sample of such JSON payload in the WebHook configuration window.
+```json
+{
+  "foo" : "bar",
+  "myJSON" : "is the best!"
+}
 ```
-Now you can edit your version of **webhook** and change according to your needs - that is if you know what you are doing. Or you can just ``PUSH``it into our system to see the process in action:
 
-```bash
-$ git remote add elasticio your-created-team-name@git.elastic.io:webhook-component.git
+#### Receive. Config fields
+* **[required]** Payload. This is the place you define your incoming data. 
+Renders an input text area field to define a payload metadata for the WebHook component.
 
-$ git push elasticio master
-```
-Please follow the instruction provided in the [Create a team](http://go2.elastic.io/manage-teams) and [Create a repository](http://go2.elastic.io/manage-repositories) for a success.
+##Actions
+### Send Data
+Simply sends data it receives as an input to a URL provided.
 
-## Limitations
+WebHook action can also be used to troubleshoot many processes to see the outcome. 
+For example one could create Invoices (in Salesforce) to Webhook flow and configure the Webhook with a url created in https://webhook.site or with any similar services.
+
+#### Send Data. Config fields
+* **[required]** **HTTP Verb**
+  * **POST**. The WebHook component can POST information to preconfigured WebHook address. This action could be used for different purposes. For example WebHook can be used to inform your custom connector about an event which it waits to work.
+  * **PUT**. The WebHook component can also PUT a specific preconfigured JSON into specific address where the process will not be handled by the server. For this reason the "Output JSON Sample" field can be used.
+* **[required]** **URI**. This is the address to send WebHook.
+* **[not required]** **Secret**. This is an optional field to authenticate WebHook POST. There maybe cases when a special password or a secret might be required. For example the WebHook address was generated explicitly with a password so that to prevent any third parties to use it. This could be your specific WebHook address that you use to send your Wordpress posts into your server.
+
+![Send Data config fields](https://user-images.githubusercontent.com/8449044/61964168-eff1b200-afd5-11e9-8928-2890c3360d13.png)
+
+## Known Limitations
 
 1. Maximal possible size for an attachment is 10 MB.
 2. Attachments mechanism does not work with [Local Agent Installation](https://support.elastic.io/support/solutions/articles/14000076461-announcing-the-local-agent-)
