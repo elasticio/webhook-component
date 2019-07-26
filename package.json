@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "elastic.io webhook component",
   "scripts": {
-    "test": "./node_modules/jasmine-node/bin/jasmine-node --test-dir spec"
+    "test": "mocha spec --recursive"
   },
   "engines": {
     "node": "6.4.0"
@@ -19,7 +19,10 @@
     "q": "^1.5.1"
   },
   "devDependencies": {
-    "nock": "9.2.3",
-    "jasmine-node": "~1.14.5"
+    "eslint-plugin-mocha": "5.3.0",
+    "mocha": "6.1.4",
+    "nock": "10.0.6",
+    "sinon": "7.3.2",
+    "chai": "3.5.0"
   }
 }
