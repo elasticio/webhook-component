@@ -1,3 +1,4 @@
+'use strict';
 const request = require('./request.js');
 
 exports.process = function (msg, conf, next) {

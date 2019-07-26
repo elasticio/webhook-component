@@ -1,4 +1,5 @@
-const request = require('request'); 
+'use strict';
+const request = require('request');
 const qs = require('querystring');
 const messages = require('elasticio-node').messages;
 const debug = require('debug')('webhook:request');
