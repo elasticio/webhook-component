@@ -7,7 +7,6 @@ const nock = require('nock');
 const send = require('../send.js');
 const getMethod = require('../get.js');
 const receive = require('../receive.js');
-const sleep = m => new Promise(r => setTimeout(r, m));
 
 describe("Test Webhook", () => {
   afterEach(() => {
@@ -18,14 +17,8 @@ describe("Test Webhook", () => {
   it("PUT No Auth", async () => {
     let nockObj = nock('http://www.example.com')
     .put('/test', {
-      body: {
         k1: "v1",
         k2: "v2"
-      },
-      headers: {
-        test: "header"
-      },
-      url: "/hook/5d25e4598370bfb1c7c4696a/Something?abc=def"
     })
     .matchHeader('Content-Type', 'application/json;charset=UTF-8')
     .reply(200, webhookReturnObj, {
@@ -46,11 +39,7 @@ describe("Test Webhook", () => {
             body: {
               k1: 'v1',
               k2: 'v2'
-            },
-            headers: {
-              test: 'header'
-            },
-            url: "\/hook\/5d25e4598370bfb1c7c4696a\/Something?abc=def",
+            }
           }, {
             uri: 'http://www.example.com/test',
             method: 'PUT'
@@ -66,14 +55,8 @@ describe("Test Webhook", () => {
   it('PUT Auth', async() => {
       let nockObj = nock('http://www.example.com')
           .put('/test', {
-              body: {
-                  k1: "v1",
-                  k2: "v2"
-              },
-              headers: {
-                  test: "header"
-              },
-              url: "/hook/5d25e4598370bfb1c7c4696a/Something?abc=def"
+              k1: "v1",
+              k2: "v2"
           })
           .matchHeader('Content-Type', 'application/json;charset=UTF-8')
           .matchHeader('X-Api-Secret', 'theSecret')
@@ -96,11 +79,7 @@ describe("Test Webhook", () => {
                       body: {
                           k1: 'v1',
                           k2: 'v2'
-                      },
-                      headers: {
-                          test: 'header'
-                      },
-                      url: "\/hook\/5d25e4598370bfb1c7c4696a\/Something?abc=def",
+                      }
                   }, {
                       uri: 'http://www.example.com/test',
                       secret:'theSecret',
@@ -117,14 +96,8 @@ describe("Test Webhook", () => {
   it('POST and get text/html response', async() => {
       let nockObj = nock('http://www.example.com')
           .post('/test', {
-              body: {
-                  k1: "v1",
-                  k2: "v2"
-              },
-              headers: {
-                  test: "header"
-              },
-              url: "/hook/5d25e4598370bfb1c7c4696a/Something?abc=def"
+              k1: "v1",
+              k2: "v2"
             })
           .matchHeader('Content-Type', 'application/json;charset=UTF-8')
           .reply(200, webhookReturnObj, {
@@ -146,11 +119,7 @@ describe("Test Webhook", () => {
                         body: {
                             k1: 'v1',
                             k2: 'v2'
-                        },
-                        headers: {
-                            test: 'header'
-                        },
-                        url: "\/hook\/5d25e4598370bfb1c7c4696a\/Something?abc=def",
+                        }
                     }, {
                         uri: 'http://www.example.com/test',
                     });
@@ -189,7 +158,7 @@ describe("Test Webhook", () => {
                         headers: {
                             test: 'header'
                         },
-                        url: "\/hook\/5d25e4598370bfb1c7c4696a\/Something?abc=def",
+                        url: "\/hook\/5d25e4598370bfb1c7c4696a\/Something?abc=def"
                     }, {
                         uri: 'http://www.example.com/test',
                     });
@@ -228,7 +197,7 @@ describe("Test Webhook", () => {
                         headers: {
                             test: 'header'
                         },
-                        url: "\/hook\/5d25e4598370bfb1c7c4696a\/Something?abc=def",
+                        url: "\/hook\/5d25e4598370bfb1c7c4696a\/Something?abc=def"
                     }, {
                         uri: 'http://www.example.com/test',
                         secret:'theSecret'
@@ -267,7 +236,7 @@ describe("Test Webhook", () => {
                         headers: {
                             test: 'header'
                         },
-                        url: "\/hook\/5d25e4598370bfb1c7c4696a\/Something?abc=def",
+                        url: "\/hook\/5d25e4598370bfb1c7c4696a\/Something?abc=def"
                     }, {
                         uri: 'http://www.example.com/test?',
                         secret: 'theSecret'
@@ -291,7 +260,7 @@ describe("Test Webhook", () => {
             headers: {
                 test: 'header'
             },
-            url: "\/hook\/5d25e4598370bfb1c7c4696a\/Something?abc=def",
+            url: "\/hook\/5d25e4598370bfb1c7c4696a\/Something?abc=def"
         };
 
         let self;
@@ -310,6 +279,7 @@ describe("Test Webhook", () => {
         expect(self.args[0][1]).to.be.not.udefined;
         expect(self.args[0][1].body).to.be.not.udefined;
         expect(self.args[0][1].body._query).to.be.not.udefined;
+        expect(self.args[0][1].body._url).to.eql("\/hook\/5d25e4598370bfb1c7c4696a\/Something?abc=def");
         expect(self.args[0]).to.eql(['data', msg]);
         expect(self.args[1][0]).to.eql('end');
     });
@@ -346,6 +316,7 @@ describe("Test Webhook", () => {
         expect(self.args[0][1]).to.be.not.udefined;
         expect(self.args[0][1].body).to.be.not.udefined;
         expect(self.args[0][1].body._query).to.eql({baz: 'boo'});
+        expect(self.args[0][1].body._url).to.eql("\/hook\/5d25e4598370bfb1c7c4696a\/Something?abc=def");
         expect(self.args[0]).to.eql(['data', msg]);
         expect(self.args[1][0]).to.eql('end');
     })
