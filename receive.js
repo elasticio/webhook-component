@@ -14,7 +14,6 @@ exports.process = function (msg, conf) {
         if (msg.headers) {
             msg.body._headers = msg.headers;
         }
-
         if (msg.method) {
             msg.body.__method = msg.method;
         }
@@ -26,7 +25,10 @@ exports.process = function (msg, conf) {
         if (msg.additionalUrlPath) {
             msg.body._additionalUrlPath = msg.additionalUrlPath;
         }
+
+        console.log('Updated body', msg.body);
     }
+
 
     let self = this;
 
