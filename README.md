@@ -1,11 +1,11 @@
 # webhook-component
 
-##Description
+## Description
 An open source component for sending and receiving [WebHooks](https://en.wikipedia.org/wiki/Webhook) on [elastic.io platform](https://www.elastic.io "elastic.io platform"). 
 
 Before you can deploy any code into our system **you must be a registered elastic.io platform user**. Please see our home page at [https://www.elastic.io](https://www.elastic.io) to learn how.
 
-##Credentials
+## Credentials
 Webhook component supports the following authorisation types:
 * **No Auth** - use this method to work with any open REST API
 * **Basic Auth** - use it to provide login credentials like username/password
@@ -14,7 +14,7 @@ Webhook component supports the following authorisation types:
 
 ![Webhook Credentials](https://user-images.githubusercontent.com/8449044/61962330-ec5c2c00-afd1-11e9-8e5f-6a1c89126034.png)
 
-##Triggers
+## Triggers
 ### Receive
 Simple webhook trigger which receives data as an input and starts the flow execution after this.
 
@@ -36,7 +36,7 @@ Send WebHook using JSON data and Content-Type of `application/json` - in this ca
 * **[required]** Payload. This is the place you define your incoming data. 
 Renders an input text area field to define a payload metadata for the WebHook component.
 
-##Actions
+## Actions
 ### Send Data
 Simply sends data it receives as an input to a URL provided.
 
