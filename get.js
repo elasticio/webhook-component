@@ -1,5 +1,4 @@
-'use strict';
-const request = require('./request.js');
+var request = require('./request.js');
 
 exports.process = function (msg, conf, next) {
     request.get.call(this, msg, conf);
