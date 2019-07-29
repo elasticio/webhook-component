@@ -3,7 +3,7 @@
   "version": "1.1.0",
   "description": "elastic.io webhook component",
   "scripts": {
-    "pretest": "eslint --fix",
+    "pretest": "eslint spec get.js receive.js request.js send.js verifyCredentials.js --fix",
     "test": "mocha spec --recursive"
   },
   "engines": {
