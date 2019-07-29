@@ -1,9 +1,9 @@
-"use strict";
-const Q = require("q");
+'use strict';
+const Q = require('q');
 
 exports.process = function (msg, conf) {
     const msgId = msg.id;
-    console.log("Received new message with id", msgId);
+    console.log('Received new message with id', msgId);
     console.log(msg);
 
     if (msg.body) {
@@ -38,7 +38,7 @@ exports.process = function (msg, conf) {
         .finally(onEnd);
 
     function emitData() {
-        console.log("Emitting data of message:", msgId);
+        console.log('Emitting data of message:', msgId);
         self.emit('data', msg);
     }
 
@@ -48,7 +48,7 @@ exports.process = function (msg, conf) {
     }
 
     function onEnd() {
-        console.log("Finished processing message:", msgId);
+        console.log('Finished processing message:', msgId);
         self.emit('end');
     }
 };

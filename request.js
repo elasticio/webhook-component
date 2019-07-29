@@ -82,12 +82,12 @@ function newMessage(response, body) {
 
 function getJSONBody(contentType, body) {
 
-     if(contentType && contentType.indexOf('application/json') === 0) {
-         return JSON.parse(body);
-     }
+    if (contentType && contentType.indexOf('application/json') === 0) {
+        return JSON.parse(body);
+    }
 
     return {
-        responseBody : body
-    }
+        responseBody: body
+    };
 }
 
