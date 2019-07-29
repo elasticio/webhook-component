@@ -1,4 +1,5 @@
 ## 1.1.0 (July 29, 2019)
+
 * Migrated to sailor 2.4.2
 * Migrated to es6
 * Refactored unit tests and component structure
