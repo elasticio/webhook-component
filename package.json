@@ -3,7 +3,7 @@
   "version": "1.1.0",
   "description": "elastic.io webhook component",
   "scripts": {
-    "pretest": "eslint spec get.js receive.js request.js send.js verifyCredentials.js --fix",
+    "pretest": "eslint spec lib/actions/get.js lib/actions/receive.js lib/actions/request.js lib/actions/send.js verifyCredentials.js --fix",
     "test": "mocha spec --recursive"
   },
   "engines": {
@@ -13,7 +13,7 @@
   "license": "Apache License 2.0",
   "dependencies": {
     "debug": "3.1.0",
-    "elasticio-sailor-nodejs": "2.2.1",
+    "elasticio-sailor-nodejs": "2.4.2",
     "elasticio-node": "0.0.8",
     "node-uuid": "1.4.8",
     "request": "2.83.x",

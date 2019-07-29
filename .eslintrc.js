@@ -10,7 +10,6 @@ module.exports = {
     'env': {
         es6: true,
         node: true,
-        jasmine: true,
         mocha: true
     },
     'parserOptions': {
