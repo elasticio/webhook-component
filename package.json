@@ -9,7 +9,7 @@
     "node": "6.4.0"
   },
   "author": "elastic.io GmbH",
-  "license": "BSD-2-Clause",
+  "license": "Apache License 2.0",
   "dependencies": {
     "debug": "3.1.0",
     "elasticio-sailor-nodejs": "2.2.1",
