@@ -13,6 +13,7 @@ describe('Test Webhook', () => {
         sinon.reset();
     });
     const webhookReturnObj = { message: 'ok', other: 'returned' };
+    let self;
 
     it('PUT No Auth', async () => {
         let nockObj = nock('http://www.example.com')
@@ -24,10 +25,10 @@ describe('Test Webhook', () => {
             .reply(200, webhookReturnObj, {
                 'Content-type': 'application/json;charset=UTF-8'
             });
-        let self;
-        await new Promise((resolve, reject) => {
+
+        await new Promise((resolve) => {
             const emitter = {
-                emit: (name, value) => {
+                emit: (name) => {
                     if (name === 'end') {
                         resolve();
                     }
@@ -64,10 +65,9 @@ describe('Test Webhook', () => {
                 'Content-type': 'application/json;charset=UTF-8'
             });
 
-        let self;
-        await new Promise((resolve, reject) => {
+        await new Promise((resolve) => {
             const emitter = {
-                emit: (name, value) => {
+                emit: (name) => {
                     if (name === 'end') {
                         resolve();
                     }
@@ -104,10 +104,9 @@ describe('Test Webhook', () => {
                 'Content-type': 'text/html; charset=utf-8'
             });
 
-        let self;
-        await new Promise((resolve, reject) => {
+        await new Promise((resolve) => {
             const emitter = {
-                emit: (name, value) => {
+                emit: (name) => {
                     if (name === 'end') {
                         resolve();
                     }
@@ -139,10 +138,9 @@ describe('Test Webhook', () => {
             .get('/test?k1=v1&k2=v2')
             .reply(200, webhookReturnObj);
 
-        let self;
-        await new Promise((resolve, reject) => {
+        await new Promise((resolve) => {
             const emitter = {
-                emit: (name, value) => {
+                emit: (name) => {
                     if (name === 'end') {
                         resolve();
                     }
@@ -177,10 +175,9 @@ describe('Test Webhook', () => {
             .matchHeader('X-Api-Secret', 'theSecret')
             .reply(200, webhookReturnObj);
 
-        let self;
-        await new Promise((resolve, reject) => {
+        await new Promise((resolve) => {
             const emitter = {
-                emit: (name, value) => {
+                emit: (name) => {
                     if (name === 'end') {
                         resolve();
                     }
@@ -216,10 +213,9 @@ describe('Test Webhook', () => {
             .matchHeader('X-Api-Secret', 'theSecret')
             .reply(404);
 
-        let self;
-        await new Promise((resolve, reject) => {
+        await new Promise((resolve) => {
             const emitter = {
-                emit: (name, value) => {
+                emit: (name) => {
                     if (name === 'end') {
                         resolve();
                     }
@@ -261,10 +257,9 @@ describe('Test Webhook', () => {
             url: 'test'
         };
 
-        let self;
-        await new Promise((resolve, reject) => {
+        await new Promise((resolve) => {
             const emitter = {
-                emit: (name, value) => {
+                emit: (name) => {
                     if (name === 'end' || name === 'error') {
                         resolve();
                     }
@@ -298,10 +293,9 @@ describe('Test Webhook', () => {
             }
         };
 
-        let self;
-        await new Promise((resolve, reject) => {
+        await new Promise((resolve) => {
             const emitter = {
-                emit: (name, value) => {
+                emit: (name) => {
                     if (name === 'end') {
                         resolve();
                     }

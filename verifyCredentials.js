@@ -1,6 +1,5 @@
 'use strict';
 
-
 /**
  * Executes the verification logic by checking that fields are not empty using the provided apiKey.
  *
@@ -19,12 +18,12 @@ module.exports = function verify(credentials) {
 
     if (type === authTypes.BASIC) {
         if (!basic.username) {
-            console.log('Error: Username is required for basic auth');
+            this.logger.debug('Error: Username is required for basic auth');
             throw new Error('Username is required for basic auth');
         }
 
         if (!basic.password) {
-            console.log('Error: Password is required for basic auth');
+            this.logger.debug('Error: Password is required for basic auth');
             throw new Error('Password is required for basic auth');
         }
     }
