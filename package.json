@@ -14,7 +14,7 @@
   "dependencies": {
     "debug": "3.1.0",
     "elasticio-node": "0.0.9",
-    "elasticio-sailor-nodejs": "2.2.1",
+    "elasticio-sailor-nodejs": "2.4.2",
     "node-uuid": "1.4.8",
     "q": "1.5.1",
     "request": "2.83.x"
