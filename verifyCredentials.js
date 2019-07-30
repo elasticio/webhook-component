@@ -18,12 +18,12 @@ module.exports = function verify(credentials) {
 
     if (type === authTypes.BASIC) {
         if (!basic.username) {
-            this.logger.debug('Error: Username is required for basic auth');
+            console.log('Error: Username is required for basic auth');
             throw new Error('Username is required for basic auth');
         }
 
         if (!basic.password) {
-            this.logger.debug('Error: Password is required for basic auth');
+            console.log('Error: Password is required for basic auth');
             throw new Error('Password is required for basic auth');
         }
     }
