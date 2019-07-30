@@ -5,8 +5,8 @@ const expect = require('chai').expect;
 const sinon = require('sinon');
 const nock = require('nock');
 const send = require('../lib/actions/send.js');
-const getMethod = require('../lib/actions/get.js');
-const receive = require('../lib/actions/receive.js');
+const getMethod = require('../lib/helper/get.js');
+const receive = require('../lib/triggers/receive.js');
 
 describe('Test Webhook', () => {
     afterEach(() => {
@@ -157,8 +157,7 @@ describe('Test Webhook', () => {
                     },
                     headers: {
                         test: 'header'
-                    },
-                    url: '\/hook\/5d25e4598370bfb1c7c4696a\/Something?abc=def'
+                    }
                 }, {
                     uri: 'http://www.example.com/test'
                 });
@@ -197,7 +196,7 @@ describe('Test Webhook', () => {
                     headers: {
                         test: 'header'
                     },
-                    url: '\/hook\/5d25e4598370bfb1c7c4696a\/Something?abc=def'
+                    url: 'test'
                 }, {
                     uri: 'http://www.example.com/test',
                     secret: 'theSecret'
@@ -235,8 +234,7 @@ describe('Test Webhook', () => {
                     },
                     headers: {
                         test: 'header'
-                    },
-                    url: '\/hook\/5d25e4598370bfb1c7c4696a\/Something?abc=def'
+                    }
                 }, {
                     uri: 'http://www.example.com/test?',
                     secret: 'theSecret'
@@ -260,7 +258,7 @@ describe('Test Webhook', () => {
             headers: {
                 test: 'header'
             },
-            url: '\/hook\/5d25e4598370bfb1c7c4696a\/Something?abc=def'
+            url: 'test'
         };
 
         let self;
@@ -279,7 +277,7 @@ describe('Test Webhook', () => {
         expect(self.args[0][1]).to.be.not.udefined;
         expect(self.args[0][1].body).to.be.not.udefined;
         expect(self.args[0][1].body._query).to.be.not.udefined;
-        expect(self.args[0][1].body._url).to.eql('\/hook\/5d25e4598370bfb1c7c4696a\/Something?abc=def');
+        expect(self.args[0][1].body._url).to.eql('test');
         expect(self.args[0]).to.eql(['data', msg]);
         expect(self.args[1][0]).to.eql('end');
     });
@@ -294,7 +292,7 @@ describe('Test Webhook', () => {
             headers: {
                 test: 'header'
             },
-            url: '\/hook\/5d25e4598370bfb1c7c4696a\/Something?abc=def',
+            url: 'test',
             query: {
                 baz: 'boo'
             }
@@ -316,7 +314,7 @@ describe('Test Webhook', () => {
         expect(self.args[0][1]).to.be.not.udefined;
         expect(self.args[0][1].body).to.be.not.udefined;
         expect(self.args[0][1].body._query).to.eql({ baz: 'boo' });
-        expect(self.args[0][1].body._url).to.eql('\/hook\/5d25e4598370bfb1c7c4696a\/Something?abc=def');
+        expect(self.args[0][1].body._url).to.eql('test');
         expect(self.args[0]).to.eql(['data', msg]);
         expect(self.args[1][0]).to.eql('end');
     });
