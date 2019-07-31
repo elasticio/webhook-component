@@ -8,6 +8,7 @@
  * @returns Promise which resolves true
  */
 
+const debug = require('debug')('webhook:verifyCredentials');
 const authTypes = {
     BASIC: 'BASIC'
 };
@@ -17,15 +18,12 @@ module.exports = function verify(credentials) {
     const { type, basic = {} } = credentials.auth;
 
     if (type === authTypes.BASIC) {
-        if (!basic.username) {
-            // eslint-disable-next-line no-console
-            console.log('Error: Username is required for basic auth');
+        if (!basic.username) itdebug('Error: Username is required for basic auth');
             throw new Error('Username is required for basic auth');
         }
 
         if (!basic.password) {
-            // eslint-disable-next-line no-console
-            console.log('Error: Password is required for basic auth');
+            debug('Error: Password is required for basic auth');
             throw new Error('Password is required for basic auth');
         }
     }
