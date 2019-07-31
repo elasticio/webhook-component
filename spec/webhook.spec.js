@@ -15,7 +15,7 @@ describe('Test Webhook', () => {
     const webhookReturnObj = { message: 'ok', other: 'returned' };
     let self;
 
-    it('PUT No Auth', async function test() {
+    it('PUT No Auth', async () => {
         let nockObj = nock('http://www.example.com')
             .put('/test', {
                 k1: 'v1',
