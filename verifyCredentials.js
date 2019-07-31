@@ -18,7 +18,8 @@ module.exports = function verify(credentials) {
     const { type, basic = {} } = credentials.auth;
 
     if (type === authTypes.BASIC) {
-        if (!basic.username) itdebug('Error: Username is required for basic auth');
+        if (!basic.username) {
+            debug('Error: Username is required for basic auth');
             throw new Error('Username is required for basic auth');
         }
 
