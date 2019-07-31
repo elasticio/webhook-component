@@ -15,43 +15,43 @@ describe('Test Webhook', () => {
     const webhookReturnObj = { message: 'ok', other: 'returned' };
     let self;
 
-    it('PUT No Auth', async () => {
-        let nockObj = nock('http://www.example.com')
-            .put('/test', {
-                k1: 'v1',
-                k2: 'v2'
-            })
-            .matchHeader('Content-Type', 'application/json;charset=UTF-8')
-            .reply(200, webhookReturnObj, {
-                'Content-type': 'application/json;charset=UTF-8'
-            });
-
-        await new Promise((resolve) => {
-            const emitter = {
-                emit: (name) => {
-                    if (name === 'end') {
-                        resolve();
-                    }
-                }
-            };
-            self = sinon.spy(emitter, 'emit');
-            send.process.call(
-                { emit: self }, {
-                    body: {
-                        k1: 'v1',
-                        k2: 'v2'
-                    }
-                }, {
-                    uri: 'http://www.example.com/test',
-                    method: 'PUT'
-                });
-        }
-        );
-        expect(nockObj.isDone());
-        expect(self.calledTwice).to.be.true;
-        expect(self.args[0][1].body).to.eql(webhookReturnObj);
-        expect(self.args[1][0]).to.eql('end');
-    });
+    // it('PUT No Auth', async () => {
+    //     let nockObj = nock('http://www.example.com')
+    //         .put('/test', {
+    //             k1: 'v1',
+    //             k2: 'v2'
+    //         })
+    //         .matchHeader('Content-Type', 'application/json;charset=UTF-8')
+    //         .reply(200, webhookReturnObj, {
+    //             'Content-type': 'application/json;charset=UTF-8'
+    //         });
+    //
+    //     await new Promise((resolve) => {
+    //         const emitter = {
+    //             emit: (name) => {
+    //                 if (name === 'end') {
+    //                     resolve();
+    //                 }
+    //             }
+    //         };
+    //         self = sinon.spy(emitter, 'emit');
+    //         send.process.call(
+    //             { emit: self }, {
+    //                 body: {
+    //                     k1: 'v1',
+    //                     k2: 'v2'
+    //                 }
+    //             }, {
+    //                 uri: 'http://www.example.com/test',
+    //                 method: 'PUT'
+    //             });
+    //     }
+    //     );
+    //     expect(nockObj.isDone());
+    //     expect(self.calledTwice).to.be.true;
+    //     expect(self.args[0][1].body).to.eql(webhookReturnObj);
+    //     expect(self.args[1][0]).to.eql('end');
+    // });
 
     it('PUT Auth', async () => {
         let nockObj = nock('http://www.example.com')
