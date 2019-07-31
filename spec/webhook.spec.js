@@ -9,6 +9,7 @@ describe("Webhook", function () {
 
     beforeEach(function(){
         self = jasmine.createSpyObj('self', ['emit']);
+        self.logger = jasmine.createSpyObj('logger', ['info']);
     });
 
     describe("Outbound", function () {
