@@ -20,12 +20,12 @@ function verify(credentials) {
 
     if (type === authTypes.BASIC) {
         if (!basic.username) {
-            console.log('Error: Username is required for basic auth');
+            this.logger.error('Error: Username is required for basic auth');
             throw new Error('Username is required for basic auth');
         }
 
         if (!basic.password) {
-            console.log('Error: Password is required for basic auth');
+            this.logger.error('Error: Password is required for basic auth');
             throw new Error('Password is required for basic auth');
         }
     }

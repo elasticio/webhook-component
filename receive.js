@@ -1,16 +1,16 @@
 "use strict";
-var Q = require("q");
+const Q = require("q");
 
 exports.process = function (msg, conf) {
-    let msgId = msg.id;
-    console.log("Received new message with id", msgId);
-    console.log(msg);
+    const msgId = msg.id;
+    this.logger.info("Received new message with id", msgId);
+    this.logger.info(msg);
 
     if (msg.query && msg.body) {
         msg.body._query = msg.query;
     }
 
-    var self = this;
+    const self = this;
 
     Q()
         .then(emitData)
@@ -18,17 +18,17 @@ exports.process = function (msg, conf) {
         .finally(onEnd);
 
     function emitData() {
-        console.log("Emitting data of message:", msgId);
+        self.logger.info("Emitting data of message:", msgId);
         self.emit('data', msg);
     }
 
     function onError(e) {
-        console.log(e);
+        self.logger.error(e);
         self.emit('error', e);
     }
 
     function onEnd() {
-        console.log("Finished processing message:", msgId);
+        self.logger.info("Finished processing message:", msgId);
         self.emit('end');
     }
 };
