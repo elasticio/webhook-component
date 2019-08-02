@@ -1,24 +1,29 @@
 {
   "name": "webhook",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "elastic.io webhook component",
   "scripts": {
-    "test": "./node_modules/jasmine-node/bin/jasmine-node --test-dir spec"
+    "pretest": "eslint spec lib verifyCredentials.js --fix",
+    "test": "mocha spec --recursive"
   },
   "engines": {
     "node": ">=10.15.0"
   },
   "author": "elastic.io GmbH",
-  "license": "BSD-2-Clause",
+  "license": "Apache License 2.0",
   "dependencies": {
     "elasticio-sailor-nodejs": "2.4.2",
     "elasticio-node": "0.0.8",
     "node-uuid": "1.4.8",
-    "request": "2.83.x",
-    "q": "^1.5.1"
+    "q": "1.5.1",
+    "request": "2.83.x"
   },
   "devDependencies": {
-    "nock": "9.2.3",
-    "jasmine-node": "~1.14.5"
+    "chai": "3.5.0",
+    "eslint": "5.16.0",
+    "eslint-plugin-mocha": "5.3.0",
+    "mocha": "6.1.4",
+    "nock": "10.0.6",
+    "sinon": "7.3.2"
   }
 }

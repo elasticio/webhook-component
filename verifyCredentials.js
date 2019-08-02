@@ -1,6 +1,4 @@
-"use strict";
-
-module.exports = verify;
+'use strict';
 
 /**
  * Executes the verification logic by checking that fields are not empty using the provided apiKey.
@@ -11,10 +9,10 @@ module.exports = verify;
  */
 
 const authTypes = {
-    BASIC: 'BASIC',
+    BASIC: 'BASIC'
 };
 
-function verify(credentials) {
+module.exports = function verify(credentials) {
     // access the value of the auth field defined in credentials section of component.json
     const { type, basic = {} } = credentials.auth;
 
@@ -31,4 +29,4 @@ function verify(credentials) {
     }
 
     return Promise.resolve(true);
-}
+};
