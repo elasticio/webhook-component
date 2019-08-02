@@ -15,7 +15,7 @@
         "receive": {
             "title": "Receive",
             "description": "Receive trigger has 3 fields:  the WebHook URL to send your data, HMAC to secure your WebHook and sample data field to define your incoming message.",
-            "main": "./receive.js",
+            "main": "./lib/triggers/receive.js",
             "fields": {
               "payload": {
                 "viewClass": "WebHookPayloadView",
@@ -32,7 +32,7 @@
     "actions": {
         "post": {
             "title": "Send data",
-            "main": "./send.js",
+            "main": "./lib/actions/send.js",
             "fields": {
                 "method": {
                     "viewClass": "SelectView",
