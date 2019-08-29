@@ -1,6 +1,6 @@
 {
   "name": "webhook",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "elastic.io webhook component",
   "scripts": {
     "test": "./node_modules/jasmine-node/bin/jasmine-node --test-dir spec"
