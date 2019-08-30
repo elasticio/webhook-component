@@ -1,0 +1,28 @@
+{
+  "type": "object",
+  "properties": {
+    "body": {
+      "type": "string"
+    },
+    "_query": {
+      "type": "object"
+    },
+    "_headers": {
+      "type": "object",
+      "properties": {
+        "accept": {
+          "type": "string"
+        }
+      }
+    },
+    "_method": {
+      "type": "string"
+    },
+    "_url": {
+      "type": "string"
+    },
+    "_additionalUrlPath": {
+      "type": "string"
+    }
+  }
+}
