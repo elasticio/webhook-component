@@ -1,5 +1,3 @@
-'use strict';
-
 module.exports = verify;
 
 /**
@@ -20,13 +18,11 @@ function verify(credentials) {
 
     if (type === authTypes.BASIC) {
         if (!basic.username) {
-            // eslint-disable-next-line no-invalid-this
             this.logger.error('Error: Username is required for basic auth');
             throw new Error('Username is required for basic auth');
         }
 
         if (!basic.password) {
-            // eslint-disable-next-line no-invalid-this
             this.logger.error('Error: Password is required for basic auth');
             throw new Error('Password is required for basic auth');
         }
