@@ -15,25 +15,18 @@
     "triggers": {
         "receive": {
             "title": "Receive",
-            "description": "Receive trigger has 3 fields:  the WebHook URL to send your data, HMAC to secure your WebHook and sample data field to define your incoming message.",
-            "main": "./receive.js",
-            "fields": {
-              "payload": {
-                "viewClass": "WebHookPayloadView",
-                "label": "Sample data",
-                "required": true,
-                "placeholder": "{ \"foo\" : \"bar\" }"
-              }
-            },
+            "description": "Simple webhook trigger which receives data as an input and starts the flow execution after this.",
+            "main": "./lib/triggers/receive.js",
             "metadata": {
-                "out": {}
+                "in": {},
+                "out": "./lib/schemas/metadata.out.json"
             }
         }
     },
     "actions": {
         "post": {
             "title": "Send data",
-            "main": "./send.js",
+            "main": "./lib/actions/send.js",
             "fields": {
                 "method": {
                     "viewClass": "SelectView",
@@ -54,15 +47,12 @@
                     "viewClass": "TextFieldView",
                     "label": "Secret",
                     "required": false
-                },
-                "outputSample":{
-                    "viewClass":"OutMetadataView",
-                    "label":"Output JSON Sample",
-                    "required":true,
-                    "default" : "{ \"response\": \"ok\" }",
-                    "placeholder" : "{ \"message\" : \"hello world\" }"
                 }
-            }
+            },
+          "metadata": {
+            "in": {},
+            "out": "./lib/schemas/metadata.out.json"
+          }
         }
     }
 }

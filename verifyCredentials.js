@@ -1,5 +1,3 @@
-"use strict";
-
 module.exports = verify;
 
 /**
@@ -11,7 +9,7 @@ module.exports = verify;
  */
 
 const authTypes = {
-    BASIC: 'BASIC',
+    BASIC: 'BASIC'
 };
 
 function verify(credentials) {
