@@ -12,11 +12,11 @@
   "author": "elastic.io GmbH",
   "license": "Apache License 2.0",
   "dependencies": {
-    "elasticio-sailor-nodejs": "2.4.2",
     "elasticio-node": "0.0.8",
+    "elasticio-sailor-nodejs": "2.5.1",
     "node-uuid": "1.4.8",
-    "request": "2.83.x",
-    "q": "1.5.1"
+    "q": "1.5.1",
+    "request": "2.83.x"
   },
   "devDependencies": {
     "chai": "3.5.0",
