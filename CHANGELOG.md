@@ -1,3 +1,7 @@
+## 1.1.1 (December 07, 2019)
+
+* Update sailor version to 2.5.1
+
 ## 1.1.0 (July 29, 2019)
 
 * Migrate to es6
