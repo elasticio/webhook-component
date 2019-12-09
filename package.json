@@ -19,6 +19,7 @@
     "q": "1.5.1"
   },
   "devDependencies": {
+    "@elastic.io/component-logger": "0.0.1",
     "chai": "3.5.0",
     "eslint": "5.16.0",
     "eslint-plugin-mocha": "5.3.0",
