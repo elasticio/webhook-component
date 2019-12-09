@@ -1,9 +1,11 @@
 /* eslint-env node, mocha */
 'use strict';
 
-const expect = require('chai').expect;
+const { expect } = require('chai');
 const sinon = require('sinon');
 const nock = require('nock');
+const logger = require('@elastic.io/component-logger')();
+
 const send = require('../lib/actions/send.js');
 const getMethod = require('../lib/helper/get.js');
 const receive = require('../lib/triggers/receive.js');
@@ -36,7 +38,7 @@ describe('Test Webhook', () => {
             };
             self = sinon.spy(emitter, 'emit');
             send.process.call(
-                { emit: self }, {
+                { emit: self, logger }, {
                     body: {
                         k1: 'v1',
                         k2: 'v2'
@@ -77,7 +79,7 @@ describe('Test Webhook', () => {
             };
             self = sinon.spy(emitter, 'emit');
             send.process.call(
-                { emit: self }, {
+                { emit: self, logger }, {
                     body: {
                         k1: 'v1',
                         k2: 'v2'
@@ -117,7 +119,7 @@ describe('Test Webhook', () => {
             };
             self = sinon.spy(emitter, 'emit');
             send.process.call(
-                { emit: self }, {
+                { emit: self, logger }, {
                     body: {
                         k1: 'v1',
                         k2: 'v2'
@@ -152,7 +154,7 @@ describe('Test Webhook', () => {
             };
             self = sinon.spy(emitter, 'emit');
             getMethod.process.call(
-                { emit: self }, {
+                { emit: self, logger }, {
                     body: {
                         k1: 'v1',
                         k2: 'v2'
@@ -190,7 +192,7 @@ describe('Test Webhook', () => {
             };
             self = sinon.spy(emitter, 'emit');
             getMethod.process.call(
-                { emit: self }, {
+                { emit: self, logger }, {
                     body: {
                         k1: 'v1',
                         k2: 'v2'
@@ -231,7 +233,7 @@ describe('Test Webhook', () => {
             };
             self = sinon.spy(emitter, 'emit');
             getMethod.process.call(
-                { emit: self }, {
+                { emit: self, logger }, {
                     body: {
                         k1: 'v1',
                         k2: 'v2'
@@ -276,7 +278,7 @@ describe('Test Webhook', () => {
                 }
             };
             self = sinon.spy(emitter, 'emit');
-            receive.process.call({ emit: self }, msg, {});
+            receive.process.call({ emit: self, logger }, msg, {});
         }
         );
         executeAction.then(function resolve() {
@@ -314,7 +316,7 @@ describe('Test Webhook', () => {
                 }
             };
             self = sinon.spy(emitter, 'emit');
-            receive.process.call({ emit: self }, msg, {});
+            receive.process.call({ emit: self, logger }, msg, {});
         }
         );
         executeAction.then(function resolve() {
