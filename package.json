@@ -7,7 +7,7 @@
     "test": "mocha spec --recursive"
   },
   "engines": {
-    "node": ">=10.15.0"
+    "node": ">=12"
   },
   "author": "elastic.io GmbH",
   "license": "Apache License 2.0",
