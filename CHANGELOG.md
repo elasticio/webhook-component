@@ -1,3 +1,9 @@
+## 1.2.0 (February 13, 2020)
+
+* "Receive" trigger awaits the result of emit
+* Update sailor version to 2.6.3
+* Remove "q" dependency
+
 ## 1.1.2 (January 30, 2020)
 
 * Update sailor version to 2.6.1
