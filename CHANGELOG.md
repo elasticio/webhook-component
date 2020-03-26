@@ -1,3 +1,6 @@
+## 1.2.1 (March 26, 2020)
+* Add help messages to the trigger and action
+
 ## 1.2.0 (February 13, 2020)
 
 * "Receive" trigger awaits the result of emit
