@@ -15,7 +15,10 @@
     "triggers": {
         "receive": {
             "title": "Receive",
-            "description": "Simple webhook trigger which receives data as an input and starts the flow execution after this.",
+            "help": {
+                "description": "Receives data from an external system to a given URL to start a new execution of the flow. Each incoming request results in a new execution.",
+                "link": "/components/webhook/index.html#receive"
+            },
             "main": "./lib/triggers/receive.js",
             "metadata": {
                 "in": {},
@@ -26,6 +29,10 @@
     "actions": {
         "post": {
             "title": "Send data",
+            "help": {
+                "description": "Sends data to a provided URL.",
+                "link": "/components/webhook/index.html#send-data"
+            },
             "main": "./lib/actions/send.js",
             "fields": {
                 "method": {
@@ -36,17 +43,26 @@
                     "model": {
                         "POST": "POST",
                         "PUT": "PUT"
+                    },
+                    "help": {
+                        "description": "Used to specify the HTTP request method for the given URI."
                     }
                 },
                 "uri": {
                     "viewClass": "TextFieldView",
                     "label": "URI",
-                    "required": true
+                    "required": true,
+                    "help": {
+                        "description": "The URI to send data to."
+                    }
                 },
                 "secret": {
                     "viewClass": "TextFieldView",
                     "label": "Secret",
-                    "required": false
+                    "required": false,
+                    "help": {
+                        "description": "May be used to prove the identity of the request sender. The value provided into this field will be sent as 'X-Api-Secret' HTTP header which may be checked on the receiving system."
+                    }
                 }
             },
           "metadata": {
