@@ -34,6 +34,7 @@
                 "link": "/components/webhook/index.html#send-data"
             },
             "main": "./lib/actions/send.js",
+            "deprecated": true,
             "fields": {
                 "method": {
                     "viewClass": "SelectView",

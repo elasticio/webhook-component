@@ -1,3 +1,7 @@
+## 1.2.2 (May 10, 2020)
+
+* Update sailor version to 2.6.7
+
 ## 1.2.1 (March 26, 2020)
 * Add help messages to the trigger and action
 
