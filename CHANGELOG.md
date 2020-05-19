@@ -1,4 +1,4 @@
-## 1.2.2 (May 10, 2020)
+## 1.2.2 (May 19, 2020)
 
 * Update sailor version to 2.6.7
 * "Send data" Action become deprecated
