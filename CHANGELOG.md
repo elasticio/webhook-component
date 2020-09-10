@@ -1,3 +1,7 @@
+## 1.2.3 (Sept 11, 2020)
+* Bump dependencies
+* Don't log entire incoming message at info level
+
 ## 1.2.2 (May 19, 2020)
 
 * Update sailor version to 2.6.7
