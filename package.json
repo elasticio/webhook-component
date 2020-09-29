@@ -1,6 +1,6 @@
 {
   "name": "webhook",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "description": "elastic.io webhook component",
   "scripts": {
     "pretest": "eslint spec lib verifyCredentials.js --fix",

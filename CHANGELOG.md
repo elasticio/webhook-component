@@ -1,3 +1,6 @@
+## 1.2.4 (Sept 29, 2020)
+* Remove potentially sensitive data from logs
+
 ## 1.2.3 (Sept 11, 2020)
 * Bump dependencies
 * Don't log entire incoming message at info level
