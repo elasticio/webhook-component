@@ -1,3 +1,6 @@
+## 1.2.5 (October 12, 2020)
+* Update sailor version to 2.6.15
+
 ## 1.2.4 (Sept 29, 2020)
 * Remove potentially sensitive data from logs
 
