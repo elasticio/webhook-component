@@ -13,7 +13,7 @@
   "license": "Apache License 2.0",
   "dependencies": {
     "elasticio-node": "0.0.9",
-    "elasticio-sailor-nodejs": "2.6.14",
+    "elasticio-sailor-nodejs": "2.6.16",
     "node-uuid": "1.4.8",
     "request": "2.88.x"
   },
