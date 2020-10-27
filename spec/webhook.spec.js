@@ -15,7 +15,7 @@ describe('Test Webhook', () => {
   const webhookReturnObj = { message: 'ok', other: 'returned' };
   let self;
 
-  it('PUT No Auth', () => {
+  it('PUT No Auth', (done) => {
     const nockObj = nock('http://www.example.com')
       .put('/test', {
         k1: 'v1',
@@ -52,10 +52,11 @@ describe('Test Webhook', () => {
       expect(self.calledTwice).to.be.true;
       expect(self.args[0][1].body).to.eql(webhookReturnObj);
       expect(self.args[1][0]).to.eql('end');
+      done();
     });
   });
 
-  it('PUT Auth', () => {
+  it('PUT Auth', (done) => {
     const nockObj = nock('http://www.example.com')
       .put('/test', {
         k1: 'v1',
@@ -94,10 +95,11 @@ describe('Test Webhook', () => {
       expect(self.calledTwice).to.be.true;
       expect(self.args[0][1].body).to.eql(webhookReturnObj);
       expect(self.args[1][0]).to.eql('end');
+      done();
     });
   });
 
-  it('POST and get text/html response', () => {
+  it('POST and get text/html response', (done) => {
     const nockObj = nock('http://www.example.com')
       .post('/test', {
         k1: 'v1',
@@ -135,10 +137,11 @@ describe('Test Webhook', () => {
         responseBody: '{"message":"ok","other":"returned"}',
       });
       expect(self.args[1][0]).to.eql('end');
+      done();
     });
   });
 
-  it('GET No Auth No QMark', () => {
+  it('GET No Auth No QMark', (done) => {
     const nockObj = nock('http://www.example.com')
       .get('/test?k1=v1&k2=v2')
       .reply(200, webhookReturnObj);
@@ -172,10 +175,11 @@ describe('Test Webhook', () => {
       expect(self.args[0][0]).to.eql('data');
       expect(self.args[0][1].body).to.eql(webhookReturnObj);
       expect(self.args[1][0]).to.eql('end');
+      done();
     });
   });
 
-  it('GET Auth QMark', () => {
+  it('GET Auth QMark', (done) => {
     const nockObj = nock('http://www.example.com')
       .get('/test?k1=v1&k2=v2')
       .matchHeader('X-Api-Secret', 'theSecret')
@@ -213,10 +217,11 @@ describe('Test Webhook', () => {
       expect(self.args[0][0]).to.eql('data');
       expect(self.args[0][1].body).to.eql(webhookReturnObj);
       expect(self.args[1][0]).to.eql('end');
+      done();
     });
   });
 
-  it('404', () => {
+  it('404', (done) => {
     const nockObj = nock('http://www.example.com')
       .get('/test?k1=v1&k2=v2')
       .matchHeader('X-Api-Secret', 'theSecret')
@@ -252,6 +257,7 @@ describe('Test Webhook', () => {
       expect(self.args[0][0]).to.eql('error');
       expect(self.args[0][1].message).to.eql('Endpoint responds with 404');
       expect(self.args[1][0]).to.eql('end');
+      done();
     });
   });
 
