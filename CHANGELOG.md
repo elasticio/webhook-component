@@ -1,3 +1,6 @@
+## 1.2.8 (January 15, 2021)
+* Update sailor version to 2.6.23
+
 ## 1.2.7 (October 27, 2020)
 * Update sailor version to 2.6.18
 * Fix unit-tests
