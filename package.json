@@ -12,9 +12,9 @@
   "license": "Apache License 2.0",
   "dependencies": {
     "elasticio-node": "0.0.9",
-    "elasticio-sailor-nodejs": "2.6.26",
+    "elasticio-sailor-nodejs": "2.6.27",
     "node-uuid": "1.4.8",
-    "request": "2.88.x"
+    "request": "2.88.2"
   },
   "devDependencies": {
     "@elastic.io/component-logger": "0.0.1",
