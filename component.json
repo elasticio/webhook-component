@@ -1,76 +1,75 @@
 {
-    "title": "Webhook",
-    "version": "1.2.10",
-    "description": "Webhooks allow you to collect information about events as they happen in near real-time. Provide a URL, select when and where you want that URL to receive data about events on your list, and we'll send it to you as the events take place.  It is recommended that you specify a URL using https.",
-    "service": "webhook",
-    "buildType":"docker",
-    "docsUrl":"https://github.com/elasticio/webhook-component",
-    "credentials": {
-        "fields": {
-            "auth": {
-                "required": false,
-                "viewClass": "WebhookAuthView"
-            }
-        }
-    },
-    "triggers": {
-        "receive": {
-            "title": "Receive",
-            "help": {
-                "description": "Receives data from an external system to a given URL to start a new execution of the flow. Each incoming request results in a new execution.",
-                "link": "/components/webhook/index.html#receive"
-            },
-            "main": "./lib/triggers/receive.js",
-            "metadata": {
-                "in": {},
-                "out": "./lib/schemas/metadata.out.json"
-            }
-        }
-    },
-    "actions": {
-        "post": {
-            "title": "Send data",
-            "help": {
-                "description": "Sends data to a provided URL.",
-                "link": "/components/webhook/index.html#send-data"
-            },
-            "main": "./lib/actions/send.js",
-            "deprecated": true,
-            "fields": {
-                "method": {
-                    "viewClass": "SelectView",
-                    "label": "HTTP Verb",
-                    "prompt": "Please select",
-                    "required": true,
-                    "model": {
-                        "POST": "POST",
-                        "PUT": "PUT"
-                    },
-                    "help": {
-                        "description": "Used to specify the HTTP request method for the given URI."
-                    }
-                },
-                "uri": {
-                    "viewClass": "TextFieldView",
-                    "label": "URI",
-                    "required": true,
-                    "help": {
-                        "description": "The URI to send data to."
-                    }
-                },
-                "secret": {
-                    "viewClass": "TextFieldView",
-                    "label": "Secret",
-                    "required": false,
-                    "help": {
-                        "description": "May be used to prove the identity of the request sender. The value provided into this field will be sent as 'X-Api-Secret' HTTP header which may be checked on the receiving system."
-                    }
-                }
-            },
-          "metadata": {
-            "in": {},
-            "out": "./lib/schemas/metadata.out.json"
+  "title": "Webhook",
+  "version": "1.2.11",
+  "description": "Webhooks allow you to collect information about events as they happen in near real-time. Provide a URL, select when and where you want that URL to receive data about events on your list, and we'll send it to you as the events take place.  It is recommended that you specify a URL using https.",
+  "service": "webhook",
+  "docsUrl": "https://github.com/elasticio/webhook-component",
+  "credentials": {
+    "fields": {
+      "auth": {
+        "required": false,
+        "viewClass": "WebhookAuthView"
+      }
+    }
+  },
+  "triggers": {
+    "receive": {
+      "title": "Receive",
+      "help": {
+        "description": "Receives data from an external system to a given URL to start a new execution of the flow. Each incoming request results in a new execution.",
+        "link": "/components/webhook/index.html#receive"
+      },
+      "main": "./lib/triggers/receive.js",
+      "metadata": {
+        "in": {},
+        "out": "./lib/schemas/metadata.out.json"
+      }
+    }
+  },
+  "actions": {
+    "post": {
+      "title": "Send data",
+      "help": {
+        "description": "Sends data to a provided URL.",
+        "link": "/components/webhook/index.html#send-data"
+      },
+      "main": "./lib/actions/send.js",
+      "deprecated": true,
+      "fields": {
+        "method": {
+          "viewClass": "SelectView",
+          "label": "HTTP Verb",
+          "prompt": "Please select",
+          "required": true,
+          "model": {
+            "POST": "POST",
+            "PUT": "PUT"
+          },
+          "help": {
+            "description": "Used to specify the HTTP request method for the given URI."
+          }
+        },
+        "uri": {
+          "viewClass": "TextFieldView",
+          "label": "URI",
+          "required": true,
+          "help": {
+            "description": "The URI to send data to."
+          }
+        },
+        "secret": {
+          "viewClass": "TextFieldView",
+          "label": "Secret",
+          "required": false,
+          "help": {
+            "description": "May be used to prove the identity of the request sender. The value provided into this field will be sent as 'X-Api-Secret' HTTP header which may be checked on the receiving system."
           }
         }
+      },
+      "metadata": {
+        "in": {},
+        "out": "./lib/schemas/metadata.out.json"
+      }
     }
+  }
 }
