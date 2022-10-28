@@ -1,5 +1,6 @@
 ## 1.2.12 (November 04, 2022)
 * Update Sailor version to 2.7.1
+* Update Node version to 16.13.2
 
 ## 1.2.11 (April 08, 2022)
 * Update Sailor version to 2.6.27
