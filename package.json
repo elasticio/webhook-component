@@ -6,7 +6,7 @@
     "test": "mocha spec --recursive"
   },
   "engines": {
-    "node": "12.20.0"
+    "node": "16.13.2"
   },
   "author": "elastic.io GmbH",
   "license": "Apache License 2.0",
