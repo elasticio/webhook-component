@@ -1,3 +1,6 @@
+## 1.2.12 (November 04, 2022)
+* Update Sailor version to 2.7.1
+
 ## 1.2.11 (April 08, 2022)
 * Update Sailor version to 2.6.27
 * Get rid of vulnerabilities in dependencies
