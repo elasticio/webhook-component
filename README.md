@@ -41,7 +41,7 @@ By default, the webhook URL will respond with the following structure:
 }
 ```
 
-However, you can specify the exact content of the reply using the `HTTP Reply` component. In this case, you will receive a reply only when the message reaches the step where the `HTTP Reply` is used, or if an error occurs in other steps between the `Webhook` step and the `HTTP Reply`.
+However, you can specify the exact content of the reply using the [HTTP Reply](https://docs.elastic.io/components/request-reply/index.html) component. In this case, you will receive a reply only when the message reaches the step where the `HTTP Reply` is used, or if an error occurs in other steps between the `Webhook` step and the `HTTP Reply`.
 
 ## Known Limitations
 * Currently, the component supports the following HTTP methods: `POST` and `GET`.
