@@ -1,4 +1,4 @@
-## 1.3.0 (January 13, 2025)
+## 2.0.0 (January 13, 2025)
 * Update Sailor version to 2.7.4
 * Removed deprecated action `Send data`
 * Removed unnecessary dependencies
