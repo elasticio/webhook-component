@@ -16,9 +16,15 @@ The Webhook component receives data at the specified URL to initiate your workfl
 The Webhook component supports the following authorization methods:
 
 * **No Auth** - Use this method to interact with any open REST API.
-* **Basic Auth** - Utilize this method to provide login credentials, such as username and password.
-* **API Key Auth** - Use this method to provide an API key as part of the headers to access the resource.
-* **HMAC Verification with Shared Secret** - Use this method to verify requests using a shared secret.
+* **Basic Auth** - Utilize this method to provide login credentials. This method includes the following fields:
+  * **Username** - (string, required)
+  * **Password** - (string, required)
+* **API Key Auth** - Use this method to provide an API key as part of the headers to access the resource. This method includes the following fields:
+  * **Header Name** - (string, required)
+  * **Header Value** - (string, required)
+* **HMAC (sha256/sha512) verification with shared secret** - Use this method to verify requests using a shared secret. This method includes the following fields:
+  * **Header Name** - (string, optional, defaults to `x-eio-signature`)
+  * **HMAC (sha256/sha512) verification shared secret** - (string, required)
 
 ## Triggers
 ### Receive
