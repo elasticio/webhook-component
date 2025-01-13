@@ -1,3 +1,10 @@
+## 2.0.0 (January 13, 2025)
+* Update Sailor version to 2.7.4
+* Removed deprecated action `Send data`
+* Removed unnecessary dependencies
+* Code migrated to TypeScript (TS)
+* Revitalized README
+
 ## 1.2.12 (November 04, 2022)
 * Update Sailor version to 2.7.1
 
