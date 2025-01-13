@@ -1,9 +1,7 @@
-# webhook-component
+# Webhook Component
 ## Table of Contents
 
-* [General information](#general-information)
-   * [Description](#description)
-   * [Purpose](#purpose)
+* [Description](#description)
 * [Credentials](#credentials)
 * [Triggers](#triggers)
    * [Receive](#receive)
@@ -12,75 +10,41 @@
 * [Known Limitations](#known-limitations)
 
 ## Description
-### Purpose
-An open source component for sending and receiving [WebHooks](https://en.wikipedia.org/wiki/Webhook) on [elastic.io platform](https://www.elastic.io "elastic.io platform"). 
+The Webhook component receives data at the specified URL to initiate your workflow.
 
 ## Credentials
-Webhook component supports the following authorisation types:
-* **No Auth** - use this method to work with any open REST API
-* **Basic Auth** - use it to provide login credentials like username/password
-* **API Key Auth** - use it to provide API Key to access the resource
-* **HMAC verification shared secret** - use it to verify via a shared secret
+The Webhook component supports the following authorization methods:
 
-![Webhook Credentials](https://user-images.githubusercontent.com/8449044/61962330-ec5c2c00-afd1-11e9-8e5f-6a1c89126034.png)
+* **No Auth** - Use this method to interact with any open REST API.
+* **Basic Auth** - Utilize this method to provide login credentials, such as username and password.
+* **API Key Auth** - Use this method to provide an API key as part of the headers to access the resource.
+* **HMAC Verification with Shared Secret** - Use this method to verify requests using a shared secret.
 
 ## Triggers
-  ### Receive
-  Simple webhook trigger which receives data as an input and starts the flow execution after this.
+### Receive
+This is a simple webhook trigger that receives data as input and initiates the execution of the workflow.
 
-   #### Expected output metadata
-   [Output schema](lib/schemas/base64.out.json)
-   
-   Example:
-   ```metadata json
+#### Output Metadata
+The message body emitted from the webhook will contain:
+* A JSON object that was transferred using the `POST` method or query parameters in the case of a `GET` request.
+* `_query` (object) - Contains the query parameters.
+* `_headers` (object) - Contains the headers of the received request.
+* `_method` (string, `POST` or `GET`) - Indicates the HTTP method of the received request.
+* `_url` (string) - The full URL that was received.
+
+#### Webhook Response
+By default, the webhook URL will respond with the following structure: 
+```json
 {
-    "recievedBody": "recievedBody",
-    "_query": {},
-    "_headers": {
-      "content-type": "application/json",
-      "accept": "*/*",
-      "accept-encoding": "gzip, deflate"
-    },
-    "_method": "POST",
-    "_url": "/hook/5d691738cb5a286adc1e68e2"
-  }
+    "requestId": "86ad47dfbce4a8ae8a1eb505b85d8bd5",
+    "message": "thank you"
+}
 ```
 
-## Actions 
-  ### Send data
-  Simply sends data it receives as an input to a URL provided.
-  
-  WebHook action can also be used to troubleshoot many processes to see the outcome. 
-  For example one could create Invoices (in Salesforce) to Webhook flow and configure the Webhook with a url created in https://webhook.site or with any similar services.
+However, you can specify the exact content of the reply using the `HTTP Reply` component. In this case, you will receive a reply only when the message reaches the step where the `HTTP Reply` is used, or if an error occurs in other steps between the `Webhook` step and the `HTTP Reply`.
 
-  #### List of Expected Config fields
-  * **[required]** **HTTP Verb**
-    * **POST**. The WebHook component can POST information to preconfigured WebHook address. This action could be used for different purposes. For example WebHook can be used to inform your custom connector about an event which it waits to work.
-    * **PUT**. The WebHook component can also PUT a specific preconfigured JSON into specific address where the process will not be handled by the server. For this reason the "Output JSON Sample" field can be used.
-  * **[required]** **URI**. This is the address to send WebHook.
-  * **[not required]** **Secret**. This is an optional field to authenticate WebHook POST. There maybe cases when a special password or a secret might be required. For example the WebHook address was generated explicitly with a password so that to prevent any third parties to use it. This could be your specific WebHook address that you use to send your Wordpress posts into your server.
-  
-  ![Send Data config fields](https://user-images.githubusercontent.com/8449044/61964168-eff1b200-afd5-11e9-8928-2890c3360d13.png)
-
-  #### Expected output metadata
-   [Output schema](lib/schemas/base64.out.json)
-     
-   Example:
-   ```metadata json
-  {
-      "recievedBody": "recievedBody",
-      "_query": {},
-      "_headers": {
-        "content-type": "application/json",
-        "accept": "*/*",
-        "accept-encoding": "gzip, deflate"
-      },
-      "_method": "POST",
-      "_url": "/hook/5d691738cb5a286adc1e68e2"
-    }
-  ```
-
-## Known limitations
-
-1. Maximal possible size for an attachment is 10 MB.
-2. Attachments mechanism does not work with [Local Agent Installation](https://support.elastic.io/support/solutions/articles/14000076461-announcing-the-local-agent-)
+## Known Limitations
+* Currently, the component supports the following HTTP methods: `POST` and `GET`.
+* When using a `POST` request, only `JSON` or `XML` data can be transferred to the workflow; other types, such as text or files, are not supported.
+* `XML` data will be automatically converted to `JSON` format.
+* The base path of the URL begins with the keyword `hook` followed by the flow ID, for example, `/hook/678119de28021e00129641fe`. You can append the desired path only after this base path, such as `/hook/678119de28021e00129641fe/sales/orders`.

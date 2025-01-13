@@ -1,19 +1,11 @@
 {
   "type": "object",
   "properties": {
-    "body": {
-      "type": "string"
-    },
     "_query": {
       "type": "object"
     },
     "_headers": {
-      "type": "object",
-      "properties": {
-        "accept": {
-          "type": "string"
-        }
-      }
+      "type": "object"
     },
     "_method": {
       "type": "string"
