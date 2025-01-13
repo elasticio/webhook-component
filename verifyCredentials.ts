@@ -1,5 +1,6 @@
 export = async function verifyCredentials(cfg: any) {
   const { type, apiKey, basic, hmacSecret } = cfg?.auth || {};
+  this.logger.info('Starting credentials verification');
 
   switch (type) {
     case 'BASIC':
@@ -12,10 +13,10 @@ export = async function verifyCredentials(cfg: any) {
       break;
     case 'HMAC':
     case 'HMAC_TWO':
-      if (!hmacSecret?.headerName) throw new Error('Header Name is required for HMAC auth');
       if (!hmacSecret?.headerValue) throw new Error('HMAC verification shared secret is required for HMAC auth');
       break;
     default:
   }
+  this.logger.info('Credentials verification completed successfully');
   return { verified: true };
 }
