@@ -1,3 +1,7 @@
+## 2.0.1 (January 05, 2026)
+* Update `Sailor` version to 2.7.7
+* Updated the Node engine to version 22.x.
+
 ## 2.0.0 (January 13, 2025)
 * Update Sailor version to 2.7.4
 * Removed deprecated action `Send data`

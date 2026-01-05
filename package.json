@@ -1,23 +1,37 @@
 {
   "name": "webhook",
   "description": "elastic.io webhook component",
+  "homepage": "https://elastic.io",
+  "author": {
+    "name": "elastic.io GmbH",
+    "email": "info@elastic.io",
+    "url": "https://www.elastic.io"
+  },
+  "keywords": [
+    "elasticio",
+    "elasticio-component",
+    "ipaas",
+    "integration",
+    "api"
+  ],
   "scripts": {
     "lint": "eslint --ext .ts --quiet --fix",
+    "audit": "better-npm-audit audit --level high --production",
     "pretest": "eslint --ext .ts --quiet --fix && find src spec -name \"*.js\" -type f -delete && rm -f verifyCredentials.js",
     "test": "LOG_OUTPUT_MODE='short' node --import tsx --test ./spec/*/*test.ts",
     "posttest": "tsc"
   },
   "engines": {
-    "node": "20.x"
+    "node": "22.x"
   },
-  "author": "elastic.io GmbH",
   "license": "Apache License 2.0",
   "dependencies": {
-    "elasticio-sailor-nodejs": "2.7.4"
+    "elasticio-sailor-nodejs": "2.7.7"
   },
   "devDependencies": {
     "@elastic.io/component-logger": "0.0.1",
-    "@types/node": "20.16.0",
+    "@types/node": "22.18.0",
+    "better-npm-audit": "3.7.3",
     "@typescript-eslint/eslint-plugin": "6.19.1",
     "@typescript-eslint/parser": "6.19.1",
     "eslint": "8.49.0",

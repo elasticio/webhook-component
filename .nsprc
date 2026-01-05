@@ -1,0 +1,6 @@
+{
+    "GHSA-869p-cjfg-cm3x": {
+            "active": true,
+            "notes": "jws vulnerability in transitive dependency via jsonwebtoken. We don't use the vulnerable HMAC verification functionality, so not affected"
+    }
+}
