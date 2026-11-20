@@ -25,6 +25,12 @@ The Webhook component supports the following authorization methods:
 * **HMAC (sha256/sha512) verification with shared secret** - Use this method to verify requests using a shared secret. This method includes the following fields:
   * **Header Name** - (string, optional, defaults to `x-eio-signature`)
   * **HMAC (sha256/sha512) verification shared secret** - (string, required)
+* **HMAC (sha256, Base64) verification with shared secret** - Same as above, but the signature is a Base64-encoded HMAC-SHA256 (e.g. Shopify webhooks; set **Header Name** to `x-shopify-hmac-sha256`). This method includes the following fields:
+  * **Header Name** - (string, optional, defaults to `x-eio-signature`)
+  * **HMAC (sha256, Base64) verification shared secret** - (string, required)
+* **HMAC (sha512, Base64) verification with shared secret** - Same as above, but the signature is a Base64-encoded HMAC-SHA512. This method includes the following fields:
+  * **Header Name** - (string, optional, defaults to `x-eio-signature`)
+  * **HMAC (sha512, Base64) verification shared secret** - (string, required)
 
 ## Triggers
 ### Receive

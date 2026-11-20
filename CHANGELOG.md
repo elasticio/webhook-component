@@ -1,3 +1,6 @@
+## 2.1.0 (November 20, 2026)
+* Added support for `HMAC_TWO_BASE64` (Base64-encoded HMAC-SHA256, e.g. Shopify) and `HMAC_BASE64` (Base64-encoded HMAC-SHA512) credential types
+
 ## 2.0.1 (January 05, 2026)
 * Update `Sailor` version to 2.7.7
 * Updated the Node engine to version 22.x.
