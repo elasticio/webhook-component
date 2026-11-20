@@ -1,5 +1,5 @@
 ## 2.1.0 (November 20, 2026)
-* Added support for `HMAC_TWO_BASE64` credential type (Base64-encoded HMAC-SHA256 signatures, e.g. Shopify)
+* Added support for `HMAC_TWO_BASE64` (Base64-encoded HMAC-SHA256, e.g. Shopify) and `HMAC_BASE64` (Base64-encoded HMAC-SHA512) credential types
 
 ## 2.0.1 (January 05, 2026)
 * Update `Sailor` version to 2.7.7
