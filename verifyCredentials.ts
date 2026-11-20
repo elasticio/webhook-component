@@ -13,6 +13,7 @@ export = async function verifyCredentials(cfg: any) {
       break;
     case 'HMAC':
     case 'HMAC_TWO':
+    case 'HMAC_TWO_BASE64':
       if (!hmacSecret?.headerValue) throw new Error('HMAC verification shared secret is required for HMAC auth');
       break;
     default:
