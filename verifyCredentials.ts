@@ -12,9 +12,9 @@ export = async function verifyCredentials(cfg: any) {
       if (!apiKey?.headerValue) throw new Error('Header Value is required for API Key auth');
       break;
     case 'HMAC':
+    case 'HMAC_BASE64':
     case 'HMAC_TWO':
     case 'HMAC_TWO_BASE64':
-    case 'HMAC_BASE64':
       if (!hmacSecret?.headerValue) throw new Error('HMAC verification shared secret is required for HMAC auth');
       break;
     default:
