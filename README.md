@@ -22,9 +22,12 @@ The Webhook component supports the following authorization methods:
 * **API Key Auth** - Use this method to provide an API key as part of the headers to access the resource. This method includes the following fields:
   * **Header Name** - (string, required)
   * **Header Value** - (string, required)
-* **HMAC (sha256/sha512) verification with shared secret** - Use this method to verify requests using a shared secret. This method includes the following fields:
+* **HMAC (sha256/sha512, hex) verification with shared secret** - Use this method to verify requests using a shared secret. This method includes the following fields:
   * **Header Name** - (string, optional, defaults to `x-eio-signature`)
   * **HMAC (sha256/sha512) verification shared secret** - (string, required)
+* **HMAC (sha256/sha512, Base64) verification with shared secret** - Same as above, but the signature is a Base64-encoded HMAC-SHA256 (e.g. Shopify webhooks; set **Header Name** to `x-shopify-hmac-sha256`). This method includes the following fields:
+  * **Header Name** - (string, optional, defaults to `x-eio-signature`)
+  * **HMAC (sha256, Base64) verification shared secret** - (string, required)
 
 ## Triggers
 ### Receive
@@ -39,7 +42,7 @@ The message body emitted from the webhook will contain:
 * `_url` (string) - The full URL that was received.
 
 #### Webhook Response
-By default, the webhook URL will respond with the following structure: 
+By default, the webhook URL will respond with the following structure:
 ```json
 {
     "requestId": "86ad47dfbce4a8ae8a1eb505b85d8bd5",
